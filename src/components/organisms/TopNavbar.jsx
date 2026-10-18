@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import Field from "@c/molecules/Field";
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -67,7 +68,15 @@ export default function TopNavbar() {
   return (
     <nav className="bg-gray-500 text-white flex justify-between items-center gap-3 p-4 sticky top-0">
       {/* Branding */}
-      <div>Logo</div>
+      <div>
+        <Image
+          width={1000}
+          height={1000}
+          className="w-10 rounded-full"
+          src="/imgs/logo.jpg"
+          alt=""
+        />
+      </div>
 
       {/* Links */}
       <div className="flex gap-3">
@@ -124,7 +133,13 @@ export default function TopNavbar() {
               <h3>
                 {firstName} {lastName}
               </h3>
-              <img className="w-10 rounded-full" src={image} alt="" />
+              <Image
+                width={1000}
+                height={1000}
+                className="w-10 rounded-full"
+                src={image}
+                alt=""
+              />
             </div>
             {/* Account Menu */}
             {showAccountMenu && (

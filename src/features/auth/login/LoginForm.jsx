@@ -22,6 +22,9 @@ export default function LoginForm() {
     setError(error);
   };
 
+  const username = process.env.NEXT_PUBLIC_USERNAME ?? "Ahmed";
+  console.log({ username });
+
   const handleLogin = async () => {
     const username = usernameRef.current.value;
     const password = passRef.current.value;

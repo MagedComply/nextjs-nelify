@@ -3,7 +3,8 @@ import TopNavbar from "@c/organisms/TopNavbar";
 import "./globals.css";
 import AppProvider from "@/providers/AppProvider";
 import Global from "@/providers/Global";
-import RegisterForm from "@/features/auth/register/RegisterForm";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 const cairoMain = Cairo({
   variable: "--font-cairo-main",
@@ -12,7 +13,7 @@ const cairoMain = Cairo({
 });
 
 export const metadata = {
-  title: "3812 Next App",
+  title: process.env.APP_TITLE,
   description: "This is our first NextJS Project",
 };
 
@@ -24,12 +25,11 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col bg-gray-50">
         <AppProvider>
-          <TopNavbar />
-          {children}
-
-          <RegisterForm />
-
-          <Global />
+          <Suspense fallback={<Loading />}>
+            <TopNavbar />
+            {children}
+            <Global />
+          </Suspense>
         </AppProvider>
       </body>
     </html>
